@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
+    <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+    <AssemblyName>Exos.OnMyWaySvc</AssemblyName>
+    <RootNamespace>Exos.OnMyWaySvc</RootNamespace>
+    <Configurations>Debug;Release;Local</Configurations>
+  </PropertyGroup>
+  <PropertyGroup>
+    <!--<DocumentationFile>$(ProjectDir)GeneratedDocs\Exos.OnMyWaySvc.xml</DocumentationFile>
+    <DockerfileRunArguments>-v "$(AppData)/Microsoft/UserSecrets:/root/.microsoft/usersecrets:ro"</DockerfileRunArguments>-->
+    <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <DockerfileFile>..\.build\onmywaysvcDockerfile</DockerfileFile>
+    <DockerfileContext>..</DockerfileContext>
+    <!--<UserSecretsId>f73b35d5-5405-4322-96ad-3b876a638115</UserSecretsId>-->
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Remove="Models\Document.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Remove="Models\ResponseModels\ClosingProviderAggregatorBusinessSvc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="DotLiquid" Version="2.2.692" />
+    <PackageReference Include="Exos.Platform" Version="14.1.12" />
+    <PackageReference Include="Mapster" Version="7.4.0" />
+    <PackageReference Include="Microsoft.Extensions.Caching.StackExchangeRedis" Version="8.0.6" />
+    <PackageReference Include="Microsoft.Rest.ClientRuntime.Azure.Authentication" Version="2.4.1" />
+    <PackageReference Include="TimeZoneConverter" Version="6.1.0" />
+  </ItemGroup>
+
+  <ProjectExtensions>
+    <VisualStudio>
+      <UserProperties appsettings_1Development_1json__JSONSchema="" />
+    </VisualStudio>
+  </ProjectExtensions>
+
+  <ItemGroup>
+    <Folder Include="Models\ResponseModels\ClosingProviderAggregatorBusinessSvc\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="Exos.Platform.AspNetCore">
+      <HintPath>..\..\..\Platform.AspNetCore\src\Exos.Platform.AspNetCore\bin\Debug\netcoreapp3.1\Exos.Platform.AspNetCore.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
